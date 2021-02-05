@@ -1,0 +1,227 @@
+.lan {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.lano {
+    margin-left: 36%;
+}
+
+.lano, .lan1, .lan2 {
+    font-family: Arial;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+
+.final:focus {
+    outline: none;
+}
+.final {
+    background: #4d90fe;
+    height: 30px;
+    line-height: 100%;
+    float: right;
+    border-radius: 3px;
+    border: solid 1px white;
+    color: white;
+    font-family: Arial;
+    margin: 10px 0;
+}
+
+input:focus {
+    border: solid 1px #95C8D8;
+}
+
+.pforms {
+}
+.inputs {
+    margin-top: -4px;
+}
+
+.inputforms {
+    outline: none;
+    height: 20px;
+    width: 100%;
+    margin-top: -20px;
+    border: solid 1px white;
+    box-shadow: 0 0 1px;
+    margin-left: -10px;
+}
+
+.gsecond {
+    margin-bottom: 20px;
+}
+
+.topform {
+    padding-top: 30px;
+    border-top: solid 1px gray;
+}
+
+.wordsearch {
+    margin-bottom: 27px;
+}
+.wordsearch, .topform {
+    font-family: Arial;
+}
+.formform {
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+}
+
+.image-search, .advanced-search, .wordsearch {
+    font-size: 12px;
+}
+
+#set {
+    margin-right: 20px;
+    color: red;
+}
+html, body {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.down {
+    text-decoration: none;
+    color: #3E424B;
+    margin-left: 30px;
+    margin-top: 20%;
+    font-size: 13px;
+    padding-bottom: 20px;
+}
+.nig {
+    margin-left: 30px;
+    font-family: Arial;
+    font-size: 13px;
+    margin-top: 15px;
+}
+.ads {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.divide {
+}
+
+.country {
+    border-bottom: solid 1px #3E424B;
+    margin-bottom: -6px;
+    width: 100%;
+}
+
+.end {
+    position: absolute;
+    bottom: 0;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 80px;
+    background: #f2f2f2;
+}
+
+.gfirst, .gsecond {
+    width: 100%;
+}
+
+.gfirst {
+    background: #DCDCDC;
+}
+
+.gsecond {
+    background: white;
+    padding-top: 3%;
+    box-sizing: border-box;
+}
+
+
+.googleLogo {
+    background: #DCDCDC;
+    width: 100%;
+    min-width: 1002px;
+    height: 150px;
+}
+
+.adv {
+    height: 50px;
+    width: 100%;
+    background: green;
+}
+.advsea {
+    color: red;
+    font-size: 24px;
+    font-family: Arial;
+    margin-top: 5px;
+    margin-bottom: 30%;
+}
+
+.advsea, .formform, .topform {
+    margin-left: 5%;
+}
+
+.gglogo {
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 16px;
+    margin-bottom: 20px;
+}
+
+.slogo {
+    height: 50%;
+    width: 24px;
+    margin-top: 12px;
+    margin-right: 20px;
+    background-size: 24px;
+    outline: none;
+}
+
+a {
+    font-family: Arial, serif;
+}
+.div-form {
+    width: 100%;
+}
+
+.imagee {
+    margin: 15% 0 2% 37%;
+}
+.search-input:hover {
+    border: none;
+}
+
+.search {
+    font-size: 16px;
+    box-shadow: 9px #888888;
+    padding: 10;
+    outline: none;
+    border: solid 1px #dfe1e5;
+    border-radius: 24px;
+    width: 70%;
+    height: 44px;
+    display: flex;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+
+
+.search-input {
+    font-size: 16px;
+    padding: 10;
+    outline: none;
+    border-radius: 24px;
+    width: 90%;
+    height: 39px;
+    border: solid 1px white;
+    display: flex;
+    margin: 0 15% 0 8%;
+    background-color: #fff;
+}
+
+
+.nav {
+    margin-left: 70%;
+    background: red;
+}
+
