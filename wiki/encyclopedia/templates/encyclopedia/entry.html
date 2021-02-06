@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+    {% if tit %}
+        {{ tit }}
+    {% else %}
+        404
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if tit %}
+        <h1 style="background-color: #C0C0C0;">{{ tit }}</h1>
+    {% else %}
+        <h1 style="text-align: center; font-size: 199px;">404</h1>
+    {% endif %}
+
+    {% if tit %}
+        <div style='margin-left: 90%; margin-top: -40px;'><a href="{% url 'edit' tit %}">Edit page</a></div>
+        {{ ent_val|safe }}
+    {% else %}
+        <p style="text-align: center;">Page does not exist!</p>
+    {% endif %}
+
+{% endblock %}

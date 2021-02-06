@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create a page
+{% endblock %}
+
+{% block body %}
+    {% if p_exist %}
+        {{ p_exist }}
+    {% else %}
+    <h1>Create a page</h1>
+	
+    <form method='post' action='{% url "create" %}'>
+	{{ c_form.as_p }}
+	{% csrf_token %}
+	<input type="submit" class='btn btn-primary'  value="Create">
+    </form>
+    {% endif %}
+
+{% endblock %}
