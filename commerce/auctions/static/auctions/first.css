@@ -1,0 +1,111 @@
+body {
+    padding: 10px;
+}
+
+.atitle {
+    border-radius: 3%;
+    border: solid 1px gray;
+}
+
+.a:focus {
+    border: solid 1px blue;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+}
+
+.right {
+    margin-top: 30px;
+}
+
+.for {
+    border: solid 1px #B6B6B4;
+    border-radius: 1%;
+    margin-bottom: 10px;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.btns {
+    border: solid 1px white;
+    background: blue;
+}
+
+.count {
+    background: gray;
+    color: white;
+    width: 17%;
+    text-align: center;
+    border-radius: 10%;
+    position: relative;
+    left: 82px;
+    bottom: 30px;
+    font-size: 13px;
+}
+
+
+.images {
+    width: 100%;
+    height: 300px;
+}
+
+.watchlistmove {
+    position: relative;
+    left: 80%;
+    bottom: 530px;
+}
+
+.closebid {
+    position: relative;
+    left: 69.5%;
+    bottom: 450px;
+}
+
+.formup {
+    margin-top: -17px;
+}
+
+h1.closed {
+    color: red;
+    font-size: 700%;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    bottom: 50%;
+}
+
+p.closed {
+    color: teal;
+    font-size: 400%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    bottom: 50%;
+}
+
+.c-time {
+    padding-top: 10px;
+    padding-left: 10px;
+    border: solid 1px white;
+    background: #EDEAE0;
+    border-radius: 2%;
+}
+
+.c-comment {
+    padding-top: 10px;
+    padding-left: 10px;
+    border: solid 1px white;
+    background: #EDEAE0;
+    border-radius: 2%;
+}
+
+.commentTime {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-column-gap: 10px;
+}

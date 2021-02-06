@@ -1,0 +1,65 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h2>Listing: {{ listing.title }}</h2> 
+		{% if not listing.active %}
+		    <h1 class="closed">CLOSED</h1>
+		    {% if listing.winner == user.username %}
+		        <p class="closed">You Won the Bid</p>
+		    {% endif %}
+		{% endif %}
+		<div>
+		    <div class='images'>
+			<img src='{{ listing.image }}' alt="item image">
+		    </div>
+		</div>
+		<div class='details'>
+		    <p>{{ listing.description }}</p>
+		    <p style="font-size: 30px; font-weight: bold;">${{ listing.starting_bid }}</p>
+		    <p style="font-size: 14px; color: gray;">Created: {{ listing.created }}</p>
+		    <form action="{% url 'list_item' listing.slug %}" method="post">
+			<p style="font-size: 14px;">{{ bid_counts }} bid{{ bid_counts|pluralize }} so far. Your bid is the current bid.</>
+			<p style="color:red;">{% if message %}{{ message }}{% else %} {% endif %}</p>
+			<p><input type='text' name='bidding' placeholder='Bid' class="form-control formup"></p>
+			<input type="submit" value="Place Bid" class="btn btn-primary" {% if not listing.active %}disabled{% endif %}>
+			{% csrf_token %}
+		    </form>
+		    <a href="{% url 'add_watchlist' listing.slug %}"  class="btn btn-primary watchlistmove">
+			Add to watchlist</a>
+		    {% if users %}
+		    <a href={% if not listing.active %}"#"{% else %}"{% url 'remove_bid' listing.slug %}"{% endif %}  class="btn btn-primary closebid">
+			Close Bid</a>
+		    {% else %}
+		    {% endif %}
+		    <ul>
+			<li>Listed by: <a href="{% url 'user_page' listing.user_id.username %}">{{ listing.user_id.username }}</a></li>
+			<li>Category: {% if listing.category %} {{ listing.get_category_display }}{% else %}No Category{% endif %}</li>
+		    </ul>
+		</div>
+		<div class='comment'>
+		    <h2 style="font-family: Arial;">Comments</h2>
+		    <div class="commentForm">
+			<form action="{% url "comment" listing.slug %}" method="POST" id='forcomment'>
+			    <p><input type='text' name='title' placeholder="Enter Comment Title" class="form-control"></p>
+			    <p><textarea name="comment" for="forcomment" rows='5' class='form-control'>Enter your comment</textarea></p>
+			    <p><input type='submit' value='Comment' class='btn btn-primary'></p>
+			{% csrf_token %}
+			</form>
+		    </div>
+		    <div class="commentTime">
+			{% for comment in comments %}
+			    <div class="c-time">
+				<p>by <a href="{% url 'user_page' comment.user_id.username %}">
+				    {{ comment.user_id.username }}</a></p>
+				<p style="font-size: 14px; color: gray;">Created: {{ comment.created }}</p>
+			    </div>
+			    <div class="c-comment">
+				{{ comment.comment }}
+			    </div>
+			{% empty %}
+			    <p>No comment yet.</p>
+			{% endfor %}
+		    </div>
+		</div>
+
+{% endblock %}
