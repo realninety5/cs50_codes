@@ -4,7 +4,7 @@
 }
 
 .lano {
-    margin-left: 36%;
+    margin-left: 40%;
 }
 
 .lano, .lan1, .lan2 {
@@ -184,7 +184,7 @@ a {
 }
 
 .imagee {
-    margin: 15% 0 2% 37%;
+    margin: 15% 0 2% 41%;
 }
 .search-input:hover {
     border: none;
@@ -197,7 +197,7 @@ a {
     outline: none;
     border: solid 1px #dfe1e5;
     border-radius: 24px;
-    width: 70%;
+    width: 550px;
     height: 44px;
     display: flex;
     margin: 0 auto;
