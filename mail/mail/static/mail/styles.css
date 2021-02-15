@@ -1,0 +1,13 @@
+textarea {
+    min-height: 400px;
+}
+
+.mail-box {
+    border: solid 0.5px gray;
+    padding: 8px;
+}
+
+.move:hover {
+    border: solid 3px #99BADD;
+}
+
