@@ -87,13 +87,16 @@ def create_listing(request):
                   {'form': ListingForm()})
 
 
-@login_required
 def list_item(request, item):
     # Retrieve thr necessary data
     comments = Comment.objects.filter(listing__slug=item)
     user = request.user.id
-    user = User.objects.get(id=user)
     item = Listing.objects.get(slug=item)
+    if not user:
+        return render(request, 'auctions/list_page.html', {'listing': item,
+                           'comments': comments})
+
+    user = User.objects.get(id=user)
 
 
     # If we already have a bid, get it;  else, max_bid = 0
