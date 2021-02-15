@@ -59,10 +59,10 @@ def formview(request):
                 #return render(request, 'encyclopedia/entry.html', {'ent_val':ent, 'tit':val})
 
             # Else return pages with almost matching entries
-            ls_entries = []
+            ls_entries = {}
             for item in all_ent:
-                if re.search(f'{val}', item, re.IGNORECASE):
-                    ls_entries.append(item)
+                if re.search(f'{val}', all_ent[item], re.IGNORECASE):
+                    ls_entries[item] = all_ent[item]
             return render(request, 'encyclopedia/index.html', {
                 'entries': ls_entries})
 
@@ -108,5 +108,6 @@ def create(request):
 # Render a random page from the list of available pages
 def random_page(request):
     ran_val = random.randrange(0, len(util.list_entries()))
-    title = util.list_entries()[ran_val]
-    return redirect('entry', TITLE=title)
+    title = list(util.list_entries())[ran_val]
+    all_ent = util.list_entries()
+    return redirect('entry', TITLE=all_ent[title])
