@@ -49,15 +49,16 @@ def editform(request, title):
 def formview(request):
     if request.method=='POST':
         form = SearchForm(request.POST)
-        print(form)
         if form.is_valid():
             val = form.cleaned_data['q']
-            ent = util.get_entry(val)
-            if ent:
-                return render(request, 'encyclopedia/entry.html', {'ent_val':ent, 'tit':val})
+            all_ent = util.list_entries()
+            if val.lower() in all_ent:
+                ent = util.get_entry(all_ent[val.lower()])
+                return redirect('entry', all_ent[val.lower()])
+            #if ent:
+                #return render(request, 'encyclopedia/entry.html', {'ent_val':ent, 'tit':val})
 
             # Else return pages with almost matching entries
-            all_ent = util.list_entries()
             ls_entries = []
             for item in all_ent:
                 if re.search(f'{val}', item, re.IGNORECASE):
