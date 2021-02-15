@@ -12,7 +12,7 @@ function read_unread(mail_id, action){
     fetch(`emails/${mail_id}`,{
         method: 'PUT',
         body: JSON.stringify({
-	        read: todo
+            read: todo
         })
     })
 }
@@ -23,7 +23,7 @@ function archive(mail_id, action){
     fetch(`emails/${mail_id}`,{
         method: 'PUT',
         body: JSON.stringify({
-	        archived: todo
+            archived: todo
         })
     })
 }
@@ -44,17 +44,17 @@ function open_email(mail_id) {
     .then(result =>
 	{        
 		let mail = `<div><strong>From</strong>: ${result['sender']}</div>`;
-	    mail += `<div><strong>To</strong>: ${result['recipients']}</div>`;
+        mail += `<div><strong>To</strong>: ${result['recipients']}</div>`;
         mail += `<div><strong>Subject</strong>: ${result['subject']}</div>`;
         mail += `<div><strong>Timestamp</strong>: ${result['timestamp']}</div>`;
         if (window.mail_title != 'Sent'){
             mail += '<p><input value="Reply" type="submit" class="btn btn-sm btn-outline-primary" id="reply"/>'
-	        mail += `<input id="${mail_id}" value="Unread" type="submit" class="btn btn-sm btn-outline-primary read" style="float: right;"/>`
-	        mail += `<input value="" id="${mail_id}" type="submit" class="btn btn-sm btn-outline-primary archive" style="float: right; margin-right: 5px;"/></p>`
+        mail += `<input id="${mail_id}" value="Unread" type="submit" class="btn btn-sm btn-outline-primary read" style="float: right;"/>`
+            mail += `<input value="" id="${mail_id}" type="submit" class="btn btn-sm btn-outline-primary archive" style="float: right; margin-right: 5px;"/></p>`
         }
-	    mail += '<hr>'
-	    mail += `${result['body']}`
-	    mail_template.innerHTML = mail;
+        mail += '<hr>'
+        mail += `${result['body']}`
+        mail_template.innerHTML = mail;
         declare_results(result);
         let arch = document.querySelector('.archive');
         if (window.mail_title != 'Sent'){
