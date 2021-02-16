@@ -152,7 +152,12 @@ document.querySelector('#compose-form').addEventListener('submit', (e) => {
     }).then(response => response.json())
     .then(result => {console.log(result)})
     
-    load_mailbox('sent')
+    setTimeout(() =>
+        {
+            load_mailbox('sent')
+        },
+        300
+    );
 });
 
 function load_mailbox(mailbox) {
