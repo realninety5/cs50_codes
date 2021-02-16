@@ -1,1 +1,0 @@
-/home/chuckle_dee/.vim/vimrc
