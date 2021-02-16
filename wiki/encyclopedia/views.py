@@ -81,11 +81,13 @@ def index(request):
 
 # Render a requested entry page
 def entry(request, TITLE):
-    ent_val = util.get_entry(TITLE)
-    if ent_val:
+    all_ent = util.list_entries()
+    try:
+        ent_val = util.get_entry(all_ent[TITLE.lower()])
         return render(request,
-            'encyclopedia/entry.html', {'ent_val':markdown(ent_val), 'tit':TITLE})
-    return render(request, 'encyclopedia/entry.html')
+            'encyclopedia/entry.html', {'ent_val':markdown(ent_val), 'tit':all_ent[TITLE.lower()]})
+    except KeyError:
+        return render(request, 'encyclopedia/entry.html')
 
 # Creates a new entry from form input
 def create(request):
