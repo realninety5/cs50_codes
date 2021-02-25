@@ -1,0 +1,55 @@
+
+.like {
+    color: gray;
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+
+.up {
+    margin-top: -5%;
+}
+
+.right {
+    color: white;
+    font-size: 53px;
+    margin-left: 20px;
+}
+
+.follow {
+    color: white;
+    margin-right: 10px;
+    line-height: -20px;
+    font-size: 23px;
+}
+
+.left {
+    text-align: right;
+    margin-right: 20px;
+    line-height: -20px;
+    color: white;
+    font-size: 23px;
+}
+
+.form-class {
+    margin: 1%;
+}
+
+.post-container {
+    background: #ffd;
+}
+
+
+.form-container {
+    border: solid 1px #B6B6B4;
+    border-radius: 3px;
+    margin-bottom: 1%;
+}
+
+.main-container {
+    margin: 1%;
+}
+
+.top {
+    background: teal;
+}

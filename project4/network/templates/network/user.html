@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <div class="main-container">
+        <div class="top container-fluid">
+            <div class='row'>
+                <div id='head' class='right clo-sm'>{{ w_user.username }}</div>
+
+                <div class='left col-sm' id='tot'><span id='count'>{{ w_user.followed_by.count }}</span> Follower(s)</div>
+                {% if w_user.username != user.username %} <span id='follow' class='follow '><a href='' style='color: white; text-decoration: none;'>{% if follows %}Unfollow{% else %}Follow{% endif %}</a></span>{% endif %}
+            </div>
+        </div>
+
+        {% for post in w_user.creator.all %}
+            <div class="post-container card">
+                <div class="form-class card-body">
+                    <div><strong><a href="{% url "user" post.creator %}">{{ post.creator }}</a></strong></div>
+                    <div id='oldPost{{ post.id }}' class='card-body'>{{ post.body }}</div>
+                    <div>{% if post.creator.username == user.username %}<a href="#" id='edit-{{ post.id }}' class='editit' >Edit</a>{% endif %}</div>
+                    <div id='update-post{{ post.id }}' style='display:none;'>
+                        <textarea class='form-control' id='textArea{{ post.id }}' rows='3'></textarea>
+                        <input type='submit' class='btn btn-primary btn-sm' id='update{{ post.id }}' style='margin: 20px 0;' value='Update'>
+                    </div>
+                    <div>{{ post.date }}</div>
+                    <div><span id='count_like{{ post.id }}'>{{ post.post.liked_by.count }} </span><span id='{{ post.id }}' class='like' style="color:{% if user in post.post.liked_by.all %}red{% else %}gray{% endif %}">&hearts;</span></div>
+                    <div><a href="#">Comments</a></div>
+                    <hr>
+                </div>
+            </div>
+        {% empty %}
+            <div class="post-container">
+                No posts yet
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="main-container">
+        {% if posts %}
+            <h1> All Posts</h1>
+        {% else %}
+            <h1>No Post Yet</h1>
+        {% endif %}
+        <div class="form-container">
+            <div class="form-class">
+                <p>New Post</p>
+                <form method="POST", action="">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" value="Post" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+
+        {% for post in posts %}
+            <div class="post-container card">
+                <div class="form-class card-body">
+                    <div><strong><a href="{% url "user" post.creator %}">{{ post.creator }}</a></strong></div>
+                    <div id='oldPost{{ post.id }}' class='card-body'>{{ post.body }}</div>
+                    <div>{% if post.creator.username == user.username %}<a href="#" id='edit-{{ post.id }}' class='editit' >Edit</a>{% endif %}</div>
+                    <div id='update-post{{ post.id }}' style='display:none;'>
+                        <textarea class='form-control' id='textArea{{ post.id }}' rows='3'></textarea>
+                        <input type='submit' class='btn btn-primary btn-sm' id='update{{ post.id }}' style='margin: 20px 0;' value='Update'>
+                    </div>
+                    <div>{{ post.date }}</div>
+                    <div><span id='count_like{{ post.id }}'>{{ post.post.liked_by.count }} </span><span id='{{ post.id }}' class='like' style="color:{% if user in post.post.liked_by.all %}red{% else %}gray{% endif %}">&hearts;</span></div>
+                    <div><a href="#">Comments</a></div>
+                    <hr>
+                </div>
+            </div>
+
+        {% empty %}
+            <div class="post-container">
+                No posts yet
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <div class="main-container">
+        <h2>Following</h2>
+        <div class="top">
+            <span><h2>Followers's tweet</h2></span>
+            <span class='left up'>{{ user.followed_by.count }} Follower{{ user.followed_by.count|pluralize }}</span>
+        </div>
+
+        {% for post in posts %}
+            <div class="post-container">
+                <div class="form-class">
+                    <div><strong><a href="{% url "user" post.creator %}">{{ post.creator }}</a></strong></div>
+                    <div><a href="#">Edit</a>
+                    <div>{{ post.body }}</div>
+                    <div>{{ post.date }}</div>
+                    <div>Like</div>
+                    <div><a href="#">Comments</a></div>
+                    <hr>
+                </div>
+            </div>
+        {% empty %}
+            <div class="post-container">
+                No posts yet
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
