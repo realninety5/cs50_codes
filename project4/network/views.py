@@ -1,5 +1,6 @@
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -12,6 +13,11 @@ from .models import User, Posts, Following, Likes
 
 def index(request):
 
+    post = Posts.objects.all()
+    paginator = Paginator(post, 10)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -22,11 +28,15 @@ def index(request):
             post.save()
             postlike = Likes(post=post)
             postlike.save()
-            return render(request, 'network/index.html', {'posts': Posts.objects.all(),
+            post = Posts.objects.all()
+            paginator = Paginator(post, 10)
+            page_number = request.GET.get('page')
+            posts = paginator.get_page(page_number)
+            return render(request, 'network/index.html', {'posts': posts,
                                                           'form': PostForm(), 'like': postlike})
         return render(request, 'network/index.html', {'form': form})
     return render(request, 'network/index.html', {'form': PostForm(),
-                                                  'posts': Posts.objects.all()})
+                                                  'posts': posts})
 
 
 def login_view(request):
@@ -105,12 +115,17 @@ def like(request, id, username=''):
 def user(request, username):
     if User.objects.filter(username=username):
         user = User.objects.get(username=username)
+        posts = user.creator.all()
+        page_number = request.GET.get('page')
+        paginator = Paginator(posts, 10)
+        posts = paginator.get_page(page_number)
+
         owner = request.user.username
         follows = Following.objects.get(user__username=owner)
         follows = follows in user.followed_by.all()
 
         return render(request, 'network/user.html',
-                    {'w_user': user, 'follows': follows})
+                      {'posts': posts, 'follows': follows, 'w_user': user})
     else:
         return render(request, 'network/user.Html')
 

@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 class User(AbstractUser):
+    num_people_followed = models.IntegerField()
     pass
 
 class Following(models.Model):
