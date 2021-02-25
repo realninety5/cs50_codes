@@ -148,6 +148,7 @@ def following(request):
 @csrf_exempt
 def follow(request, username):
     user = request.user.username
+    user_follow = User.objects.get(username=user)
     user = Following.objects.get(user__username=user)
     data = json.loads(request.body)
     username = User.objects.get(username=username)
@@ -156,8 +157,12 @@ def follow(request, username):
     if request.method == 'PUT':
         if data.get('follow') == 'Unfollow':
             username.followed_by.remove(user)
+            user_follow.num_people_followed -= 1
+            user_follow.save()
         else:
             username.followed_by.add(user)
+            user_follow.num_people_followed += 1
+            user_follow.save()
         username.save()
     return HttpResponse(status=204)
 
